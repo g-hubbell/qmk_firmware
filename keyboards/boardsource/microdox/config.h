@@ -25,6 +25,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MANUFACTURER    Boardsource
 #define PRODUCT         microdox
 
+
+#define TAPPING_TERM 200
+#define IGNORE_MOD_TAP_INTERRUPT
+
+
 /* key matrix size */
 // Rows are doubled-up
 #define MATRIX_ROWS 8
@@ -61,6 +66,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGBLED_NUM 12    // Number of LEDs
 #endif
 
+#define NO_ACTION_MACRO
+#define NO_ACTION_FUNCTION
+
+
 /*
  * Feature disable options
  *  These options are also useful to firmware size reduction.
@@ -76,3 +85,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#define NO_ACTION_LAYER
 //#define NO_ACTION_TAPPING
 //#define NO_ACTION_ONESHOT
+//#define NO_ACTION_MACRO
+//#define NO_ACTION_FUNCTION
