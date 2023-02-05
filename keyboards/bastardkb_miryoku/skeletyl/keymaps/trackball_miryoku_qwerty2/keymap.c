@@ -65,7 +65,9 @@ enum custom_keycodes {
     TMUX_COPYMODE,
     TMUX_SPLITVERT,
     TMUX_SPLITHORIZ,
-    TMUX_DETATCH
+    TMUX_DETATCH,
+    VIMCMD,
+    VIMSEARCH
 
 };
 
@@ -184,6 +186,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 SEND_STRING(SS_LCTL("b") SS_DELAY(50) "d");
             }
 
+            break;
+        case VIMCMD:
+            if (record->event.pressed) {
+                SEND_STRING(SS_TAP(X_ESC) SS_DELAY(50) ":");
+            }
+            break;
+        case VIMSEARCH:
+            if (record->event.pressed) {
+                SEND_STRING(SS_TAP(X_ESC) SS_DELAY(50) ":%s/");
+            }
             break;
 
         // SCROLLING MODES
@@ -566,7 +578,7 @@ MT(MOD_LGUI, KC_A), MT(MOD_LALT,KC_S), MT(MOD_LCTL, KC_D), MT(MOD_LSFT,KC_F), KC
 [_BUTTON] = LAYOUT_split_3x5_3(
                         KC_NO,KC_NO,KC_NO,KC_NO,KC_NO,                                          KC_NO,KC_NO,KC_NO,KC_NO,KC_NO,
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-                        KC_NO,KC_NO,KC_NO,KC_NO,KC_NO,                                          KC_NO,KC_NO,KC_NO,KC_NO,KC_NO,
+                        KC_NO,VIMSEARCH,KC_NO,VIMCMD,KC_NO,                                          KC_NO,KC_NO,KC_NO,KC_NO,KC_NO,
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
   TMUX_DETATCH,TMUX_SPLITHORIZ,TMUX_SPLITVERT,TMUX_COPYMODE,KC_NO,                                          KC_NO,KC_NO,KC_NO,KC_NO,KC_NO,
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
